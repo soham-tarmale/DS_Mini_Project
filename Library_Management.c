@@ -60,6 +60,23 @@ void display(library *l)
     }
 }
 
+void search(library *l, int id)
+{
+    book *p = l->start;
+
+    while(p != NULL)
+    {
+        if(p->id == id)
+        {
+            printf("\nBook Found:");
+            printf("\nName: %s\nAuthor: %s\n", p->name, p->author);
+            return;
+        }
+        p = p->next;
+    }
+    printf("\nBook not found...\n");
+}
+
 int main()
 {
     int ch, id;
