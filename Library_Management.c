@@ -15,6 +15,31 @@ typedef struct library
     book *start;
 }library;
 
+void addBook(library *l, int id, char name[], char author[])
+{
+    book *newrec, *p;
+    newrec = (book*)malloc(sizeof(book));
+
+    newrec->id = id;
+    strcpy(newrec->name, name);
+    strcpy(newrec->author, author);
+    newrec->next = NULL;
+
+    if(l->start == NULL)
+    {
+        l->start = newrec;
+    }
+    else
+    {
+        p = l->start;
+        while(p->next != NULL)
+        {
+            p = p->next;
+        }
+        p->next = newrec;
+    }
+}
+
 int main()
 {
     int ch, id;
