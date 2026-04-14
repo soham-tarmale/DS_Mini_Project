@@ -77,6 +77,45 @@ void search(library *l, int id)
     printf("\nBook not found...\n");
 }
 
+void deleteBook(library *l, int id)
+{
+    book *p, *q;
+
+    if(l->start == NULL)
+    {
+        printf("\nNo books to delete...\n");
+        return;
+    }
+
+    // First node
+    if(l->start->id == id)
+    {
+        p = l->start;
+        l->start = l->start->next;
+        free(p);
+        printf("\nBook deleted...\n");
+        return;
+    }
+
+    q = l->start;
+    while(q->next != NULL && q->next->id != id)
+    {
+        q = q->next;
+    }
+
+    if(q->next == NULL)
+    {
+        printf("\nBook not found...\n");
+    }
+    else
+    {
+        p = q->next;
+        q->next = p->next;
+        free(p);
+        printf("\nBook deleted...\n");
+    }
+}
+
 int main()
 {
     int ch, id;
