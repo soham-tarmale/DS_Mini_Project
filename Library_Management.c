@@ -122,4 +122,52 @@ int main()
     char name[50], author[50];
     library l;
     l.start = NULL;
+    while(1)
+    {
+        printf("\n\n--- Library Menu ---");
+        printf("\n1. Add Book");
+        printf("\n2. Delete Book");
+        printf("\n3. Search Book");
+        printf("\n4. Display Books");
+        printf("\n5. Exit");
+        printf("\nEnter choice: ");
+        scanf("%d", &ch);
+
+        if(ch == 5)
+            break;
+
+        switch(ch)
+        {
+            case 1:
+                printf("\nEnter Book ID: ");
+                scanf("%d", &id);
+                printf("Enter Book Name: ");
+                scanf(" %[^\n]", name);
+                printf("Enter Author Name: ");
+                scanf(" %[^\n]", author);
+                addBook(&l, id, name, author);
+                break;
+
+            case 2:
+                printf("\nEnter Book ID to delete: ");
+                scanf("%d", &id);
+                deleteBook(&l, id);
+                break;
+
+            case 3:
+                printf("\nEnter Book ID to search: ");
+                scanf("%d", &id);
+                search(&l, id);
+                break;
+
+            case 4:
+                display(&l);
+                break;
+
+            default:
+                printf("\nInvalid choice...");
+        }
+    }
+    return 0;
+
 }
