@@ -40,6 +40,26 @@ void addBook(library *l, int id, char name[], char author[])
     }
 }
 
+void display(library *l)
+{
+    book *p;
+    if(l->start == NULL)
+    {
+        printf("\nNo books available...\n");
+    }
+    else
+    {
+        p = l->start;
+        while(p != NULL)
+        {
+            printf("\nID: %d", p->id);
+            printf("\nName: %s", p->name);
+            printf("\nAuthor: %s\n", p->author);
+            p = p->next;
+        }
+    }
+}
+
 int main()
 {
     int ch, id;
